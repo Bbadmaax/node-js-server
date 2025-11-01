@@ -12,13 +12,21 @@ export const getUsers = async (req, res) => {
 };
 
 // grtuseronly
-export const getUserOnly = async (req,res)=> {
+// // getUserOnly
+export const getUserOnly = async (req, res) => {
 
-  const user = await  User.findById(req.params.id);
-  if (!user) return res.status(404).json({message : "user not found"})
+  const {id} = req.params;
+  try {
+    const user = await User.findById(id); // akhri user by ID
+    if (!user) {
+      return res.status(404).json({ message: "User not found ❌" });
+    }
 
-    res.status(201).json(user)
-}
+    res.status(200).json(user); // 200 sababtoo ah waa read operation
+  } catch (err) {
+    res.status(500).json({ message: "Server error ⚠️" });
+  }
+};
 
 // createUser
 export const createUser = async (req, res) => {
