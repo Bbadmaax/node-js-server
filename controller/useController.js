@@ -14,8 +14,7 @@ export const getUsers = async (req, res) => {
 // grtuseronly
 // // getUserOnly
 export const getUserOnly = async (req, res) => {
-
-  const {id} = req.params;
+  const { id } = req.params;
   try {
     const user = await User.findById(id); // akhri user by ID
     if (!user) {
@@ -31,11 +30,11 @@ export const getUserOnly = async (req, res) => {
 // createUser
 export const createUser = async (req, res) => {
   try {
-    const user = new User(req.body)
-    const saved = await user.save()
-    res.status(201).json(saved)
+    const user = new User(req.body);
+    const saved = await user.save();
+    res.status(201).json(saved);
   } catch (err) {
-    res.status(500).json({err : err.message})
+    res.status(500).json({ err: err.message });
   }
 };
 
@@ -44,7 +43,9 @@ export const updateUser = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
 
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found ❌" });
@@ -64,9 +65,11 @@ export const deleteUser = async (req, res) => {
     if (!deletedUser) {
       return res.status(404).json({ message: "User not found ❌" });
     }
-    res.status(200).json({ message: "User deleted ✅"});
-
+    res.status(200).json({ message: "User deleted ✅" });
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
 };
+
+
+
