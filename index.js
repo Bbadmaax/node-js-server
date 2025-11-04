@@ -2,11 +2,16 @@ import express from "express";
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import morgan from "morgan";
+
 import userRoutes from "./routes/userRoutes.js"
 import AuthRoutes from "./routes/AuthRoutes.js"
+import adminRoutes from "./routes/admin.js"
+
+
 import { logger } from "./middlewares/logger.js";
 import { notFound } from "./middlewares/notFound.js";
 import { globalHandler } from "./middlewares/globalHandler.js";
+
 //load env files
 dotenv.config();
 
@@ -21,6 +26,7 @@ app.use(logger)
 //routes
 app.use("/users", userRoutes)
 app.use("/Auth", AuthRoutes)
+app.use("/admin", adminRoutes)
 
 // test express browser
 app.get("/", (req,res)=> {

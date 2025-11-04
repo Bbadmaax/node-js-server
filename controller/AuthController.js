@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 // register new user token
 export const register = async (req, res, next) => {
-  let  { name, email, password } = req.body;
+  let  { name, email, password, roles } = req.body;
 
   try {
    // email lowercase
@@ -17,7 +17,7 @@ export const register = async (req, res, next) => {
       return res.status(400).json({ message: "email already in use" });
 
     // create user 
-    const user = await User.create({ name, email, password });
+    const user = await User.create({ name, email, password,roles });
 
     // generate token
     const token = generateToken(user._id)

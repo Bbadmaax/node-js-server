@@ -7,11 +7,12 @@ const router = express.Router()
 router.post("/register", register)
 router.post("/login", login)
 
-// protext route  (qof aan login aheyn inta ma iman karo)
+
+
+// protect route  (qof aan login aheyn inta ma iman karo)
 router.get("/profile", protect, (req,res)=> {
     //jalkan hadii loo soo gudbo maxa ku jira protext lasoo dhaafo
-    console.log("req.user: ", req.user)
-    res.json("protecte route")
+    res.json("protecte route", req.user.name)
 })
 
 export default router;
