@@ -32,7 +32,7 @@ export const createUser = async (req, res) => {
   try {
     const user = new User(req.body);
     const saved = await user.save();
-    res.status(201).json(saved);
+    res.status(201).json(saved); 
   } catch (err) {
     res.status(500).json({ err: err.message });
   }

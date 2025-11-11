@@ -37,7 +37,7 @@ export const login = async (req,res,next)=> {
       return res.status(400).json({ message: "Email and password are required ❌" });
     }
 
-
+ 
      // 2. Raadi userka database-ka
 const user = await User.findOne({email: email.toLowerCase()})
   if(!user) {

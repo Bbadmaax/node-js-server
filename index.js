@@ -11,6 +11,8 @@ import adminRoutes from "./routes/admin.js"
 import { logger } from "./middlewares/logger.js";
 import { notFound } from "./middlewares/notFound.js";
 import { globalHandler } from "./middlewares/globalHandler.js";
+import uploadRoutes from "./routes/uploadRoutes.js"
+import TaskRoutes from "./routes/TaskRoutes.js"
 
 //load env files
 dotenv.config();
@@ -20,13 +22,16 @@ const PORT = process.env.PORT || 5000
 
 // middleware
 app.use(express.json())
-app.use(morgan("dev"))
+app.use(morgan("combined"))
 // custom middleware 
 app.use(logger)
 //routes
 app.use("/users", userRoutes)
 app.use("/Auth", AuthRoutes)
 app.use("/admin", adminRoutes)
+app.use("upload", uploadRoutes)
+
+app.use('/tasks', TaskRoutes)
 
 // test express browser
 app.get("/", (req,res)=> {
@@ -47,4 +52,6 @@ mongoose.connect(process.env.MONGO_URI)
 app.listen(PORT, ()=> {
     console.log(`yourecode is running http://localhost:${PORT}`)
 })
+
+
 
