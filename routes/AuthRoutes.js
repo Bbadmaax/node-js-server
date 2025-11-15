@@ -9,7 +9,43 @@ import { loginSchema } from "../schemas/loginSchema.js";
 
 const router = express.Router()
 
+/**
+ * @swagger
+ * /Auth/register:
+ *   post:
+ *     summary: Register new user
+ *     description: Creates a new user and returns a JWT token.
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Mustafe
+ *               email:
+ *                 type: string
+ *                 example: mustafe@gmail.com
+ *               password:
+ *                 type: string
+ *                 example: 123456
+ *     responses:
+ *       201:
+ *         description: User registered successfully
+ *       400:
+ *         description: Email already in use
+ *       500:
+ *         description: Server error
+ */
 router.post("/register", validate(registerSchema),  register)
+
 router.post("/login", validate(loginSchema), login)
 
 

@@ -8,6 +8,8 @@ import { limitter } from "./middlewares/rateLimiter.js";
 import userRoutes from "./routes/userRoutes.js"
 import AuthRoutes from "./routes/AuthRoutes.js"
 import adminRoutes from "./routes/admin.js"
+import uploadRoutes from "./routes/uploadRoutes.js"
+import TaskRoutes from "./routes/TaskRoutes.js"
 
 // swager ui express 
 import swaggerUi from "swagger-ui-express"
@@ -17,8 +19,7 @@ import { swaggerSpec } from "./utils/swagger.js";
 import { logger } from "./middlewares/logger.js";
 import { notFound } from "./middlewares/notFound.js";
 import { globalHandler } from "./middlewares/globalHandler.js";
-import uploadRoutes from "./routes/uploadRoutes.js"
-import TaskRoutes from "./routes/TaskRoutes.js"
+
 
 //load env files
 dotenv.config();
@@ -43,7 +44,7 @@ app.use('/docs',swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 app.use("/users", userRoutes)
 app.use("/Auth", AuthRoutes)
 app.use("/admin", adminRoutes)
-app.use("upload", uploadRoutes)
+app.use("/upload", uploadRoutes)
 
 app.use('/tasks', TaskRoutes)
 
