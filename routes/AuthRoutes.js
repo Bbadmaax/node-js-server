@@ -13,7 +13,7 @@ const router = express.Router()
  * @swagger
  * /Auth/register:
  *   post:
- *     summary: Register new user
+ *     summary: Register new userSSSSS
  *     description: Creates a new user and returns a JWT token.
  *     tags: [Authentication]
  *     requestBody:
