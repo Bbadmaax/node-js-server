@@ -13,7 +13,7 @@ const options = {
     },
     servers: [
       {
-        url: process.env.NODE_ENV == "development" ?  "http://localhost:5000" : "https://node-js-server-1-d7vf.onrender.com"
+        url: process.env.NODE_ENV === "development" ?  "http://localhost:5000" :  "https://node-js-server-1-d7vf.onrender.com"
       },
     ],
     components: {
