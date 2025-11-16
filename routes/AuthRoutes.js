@@ -15,7 +15,7 @@ const router = express.Router()
  *   post:
  *     summary: Register new userSSSSS
  *     description: Creates a new user and returns a JWT token.
- *     tags: [Authentication]
+ *     tags: [register]
  *     requestBody:
  *       required: true
  *       content:
